@@ -1,0 +1,10 @@
+
+*.user
+*.suo
+*.docstates
+ClientBin
+Bin
+bin
+Obj
+obj
+*.vsp
