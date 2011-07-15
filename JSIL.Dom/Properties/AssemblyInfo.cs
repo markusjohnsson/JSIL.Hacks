@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Infviz.Research.Jsil.DomProxy")]
+[assembly: AssemblyTitle("JSIL.Dom")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Infviz.Research.Jsil.DomProxy")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
+[assembly: AssemblyCompany("Markus Johnsson")]
+[assembly: AssemblyProduct("JSIL.Dom")]
+[assembly: AssemblyCopyright("Copyright © Markus Johnsson 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
