@@ -113,11 +113,17 @@ namespace JSIL.Dom
 
         #endregion
 
-        [JSChangeName("width")]
-        public double Width { get; private set; }
+        public double Width
+        {
+            get { return (double)Verbatim.Expression("this._element.width"); }
+            set { Verbatim.Expression("this._element.width = value"); }
+        }
 
-        [JSChangeName("height")]
-        public double Height { get; private set; }
+        public double Height
+        {
+            get { return (double)Verbatim.Expression("this._element.height"); }
+            set { Verbatim.Expression("this._element.height = value"); }
+        }
 
         protected object _element;
 

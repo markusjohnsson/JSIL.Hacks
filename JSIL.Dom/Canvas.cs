@@ -55,6 +55,13 @@ namespace JSIL.Dom
             }
         }
 
+        public double LineWidth
+        {
+            set
+            {
+                Verbatim.Expression("this._context.lineWidth = value");
+            }
+        }
 
         #region Simple shapes
         /// <summary>
@@ -110,11 +117,40 @@ namespace JSIL.Dom
         }
 
         /// <summary>
+        /// Marks the current subpath as closed, and starts a new subpath with a point the same as the start and end of the newly closed subpath.
+        /// </summary>
+        [JSReplacement("$this._context.closePath()")]
+        public void ClosePath()
+        {
+
+        }
+
+        /// <summary>
         /// Strokes the subpaths with the current stroke style.
         /// </summary>
         [JSReplacement("$this._context.stroke()")]
         public void Stroke()
         {
+        }
+
+        /// <summary>
+        /// Adds an arc with the given control points and radius to the current subpath, connected to the previous point by a straight line.
+        /// Throws an INDEX_SIZE_ERR exception if the given radius is negative.
+        /// </summary>
+        [JSReplacement("$this._context.arcTo($x1, $y1, $x2, $y2, $radius)")]
+        public void ArcTo(double x1, double y1, double x2, double y2, double radius)
+        {
+
+        }
+
+        /// <summary>
+        /// Adds points to the subpath such that the arc described by the circumference of the circle described by the arguments, starting at the given start angle and ending at the given end angle, going in the given direction (defaulting to clockwise), is added to the path, connected to the previous point by a straight line.
+        /// Throws an INDEX_SIZE_ERR exception if the given radius is negative.
+        /// </summary>
+        [JSReplacement("$this._context.arc($x, $y, $radius, $startAngle, $endAngle, $antiClockwise)")]
+        public void Arc(double x, double y, double radius, double startAngle, double endAngle, bool antiClockwise = false)
+        {
+
         }
 
         /// <summary>

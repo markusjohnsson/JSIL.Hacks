@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{19896345-9D1B-4F08-B1A1-8C84E7C5F61B}</ProjectGuid>
+    <ProjectGuid>{7F943552-0353-4A5E-A1D1-84A0DFAF52DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HelloWorld</RootNamespace>
-    <AssemblyName>HelloWorld</AssemblyName>
+    <RootNamespace>HelloCanvas</RootNamespace>
+    <AssemblyName>HelloCanvas</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,6 +38,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\JSIL.Dom\JSIL.Dom.csproj">
+      <Project>{466EBF53-8EC1-4B8D-9AF4-061D9BFCA156}</Project>
+      <Name>JSIL.Dom</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="..\..\Dependencies\JSIL\Libraries\JSIL.Bootstrap.js">
       <Link>libs\JSIL.Bootstrap.js</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -53,12 +59,6 @@
     <Content Include="MainPage.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\JSIL.Dom\JSIL.Dom.csproj">
-      <Project>{466EBF53-8EC1-4B8D-9AF4-061D9BFCA156}</Project>
-      <Name>JSIL.Dom</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
