@@ -38,7 +38,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MainPage.html" />
+    <None Include="..\..\Dependencies\JSIL\Libraries\JSIL.Bootstrap.js">
+      <Link>libs\JSIL.Bootstrap.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Dependencies\JSIL\Libraries\JSIL.Browser.js">
+      <Link>libs\JSIL.Browser.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Dependencies\JSIL\Libraries\JSIL.Core.js">
+      <Link>libs\JSIL.Core.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Dependencies\JSIL\Libraries\JSIL.IO.js">
+      <Link>libs\JSIL.IO.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="MainPage.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\JSIL.Dom\JSIL.Dom.csproj">

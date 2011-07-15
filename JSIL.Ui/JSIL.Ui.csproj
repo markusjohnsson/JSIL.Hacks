@@ -54,7 +54,7 @@
     <Compile Include="VBox.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Dependencies\JSIL\Meta\Meta.csproj">
+    <ProjectReference Include="..\Dependencies\JSIL\Meta\Meta.csproj">
       <Project>{37C67C73-1F58-49B8-A39E-768AC88C2447}</Project>
       <Name>Meta</Name>
     </ProjectReference>
