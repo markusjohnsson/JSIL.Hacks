@@ -14,13 +14,14 @@ This collection of hacks is using (and would be nothing without) JSIL by Kevin G
 
 Using git bash:
 
-```git clone git://github.com/markusjohnsson/JSIL.Hacks.git
+```bash
+git clone git://github.com/markusjohnsson/JSIL.Hacks.git
 git submodule init
 git submodule update
 cd Dependencies/JSIL
 git submodule init
 git submodule update
-cd ../..```
+```
 
 ## Building JSIL
 Load Solution Dependencies\JSIL\JSIL.sln in Visual Studio and build it by hitting F6.
