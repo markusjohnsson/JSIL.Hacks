@@ -1,0 +1,3 @@
+[submodule "Dependencies/JSIL"]
+	path = Dependencies/JSIL
+	url = git@github.com:/markusjohnsson/JSIL

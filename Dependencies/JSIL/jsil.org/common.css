@@ -1,0 +1,140 @@
+body {
+	font-family: Calibri, Tahoma, Verdana, sans-serif;
+	font-size: 13pt;
+	font-weight: normal;
+	margin: 2px;
+	padding: 0px;
+	background-color: #F4FFF9;
+	color: #002821;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Calibri, Tahoma, Verdana, sans-serif;
+	font-weight: bold;
+}
+
+a {
+	color: #AD4E00;
+	border-radius: 6px;
+	border-top-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+	border-width: 1px;
+	border-top-width: 0px;
+	border-bottom-width: 1px;
+	border-color: transparent;
+	border-style: solid;
+	padding-left: 2px;
+	padding-right: 2px;
+	background-color: rgba(255, 229, 209, 0.33);
+	text-decoration: none;
+}
+
+a:visited {
+	color: #5B2A00;
+}
+
+a:hover {
+	background-color: rgba(255, 229, 209, 0.8);
+	border-color: #C68D61;
+	color: #703200;
+}
+
+em {
+	font-style: italic;
+}
+
+tt {
+	font-family: Consolas, monospace;
+}
+
+h1 {
+	font-size: 3.2em;
+	margin-top: -0.05em;
+	margin-bottom: 0.025em;
+}
+
+h2 {
+	font-size: 2em;
+	margin-top: 0.1em;
+	margin-bottom: 0.025em;
+}
+
+h3 {
+	font-size: 1.2em;
+	margin-top: 0.2em;
+	margin-bottom: 0.05em;
+}
+
+p {
+	line-height: 1.2em;
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+a, ul, ol {
+	line-height: 1.2em;
+}
+
+ol {
+	list-style-type: decimal;
+	list-style-position: inside;
+	padding-left: 0.4em;
+}
+
+.rounded-box {
+	border-radius: 16px;
+	border-top-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-style: solid;
+	border-width: 1px;
+	border-top-width: 0px;
+	border-color: rgb(20, 137, 116);
+	background: rgba(20, 137, 116, 0.20);
+	background: -ms-linear-gradient(
+		90deg, #E9F9F2, #BCE1D8
+	);
+	background: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.01, #E9F9F2),
+		color-stop(0.99, #BCE1D8)
+	);
+	background: -moz-linear-gradient(
+		center bottom,
+		#E9F9F2 1%,
+		#BCE1D8 99%
+	);
+	padding: 0.4em;
+	width: 56em;
+	margin-left: 0em;
+	margin-top: 0.75em;
+	margin-right: 0em;
+	margin-bottom: 0.75em;
+	float: left;
+	clear: left;
+}
+
+div#content-box {
+	position: relative;
+	padding: 0px;
+	width: 56em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#footer {
+	float: left;
+	clear: both;
+	font-size: 0.9em;
+	width: 100%;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+	text-align: center;
+	z-index: -99;
+}
+
+.aside {
+	font-size: 0.75em;
+	font-style: italic;
+}
