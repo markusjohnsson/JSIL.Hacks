@@ -52,7 +52,7 @@
       <Project>{37C67C73-1F58-49B8-A39E-768AC88C2447}</Project>
       <Name>Meta</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Infviz.Research.Jsil.DomProxy\JSIL.Dom.csproj">
+    <ProjectReference Include="..\JSIL.Dom\JSIL.Dom.csproj">
       <Project>{466EBF53-8EC1-4B8D-9AF4-061D9BFCA156}</Project>
       <Name>JSIL.Dom</Name>
     </ProjectReference>
