@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{466EBF53-8EC1-4B8D-9AF4-061D9BFCA156}</ProjectGuid>
+    <ProjectGuid>{76F96AFB-FCC5-45B6-BEE4-0A5164705F5E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JSIL.Dom</RootNamespace>
-    <AssemblyName>JSIL.Dom</AssemblyName>
+    <RootNamespace>CanvasAnimation</RootNamespace>
+    <AssemblyName>CanvasAnimation</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,23 +32,39 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Canvas.cs" />
-    <Compile Include="Element.cs" />
-    <Compile Include="IntervalDispatcher.cs" />
-    <Compile Include="RgbStyle.cs" />
-    <Compile Include="Style.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringStyle.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dependencies\JSIL\Meta\Meta.csproj">
-      <Project>{37C67C73-1F58-49B8-A39E-768AC88C2447}</Project>
-      <Name>Meta</Name>
+    <ProjectReference Include="..\..\JSIL.Dom\JSIL.Dom.csproj">
+      <Project>{466EBF53-8EC1-4B8D-9AF4-061D9BFCA156}</Project>
+      <Name>JSIL.Dom</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\dependencies\jsil\libraries\JSIL.Bootstrap.js">
+      <Link>libs\JSIL.Bootstrap.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\dependencies\jsil\libraries\JSIL.Core.js">
+      <Link>libs\JSIL.Core.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\dependencies\jsil\libraries\JSIL.IO.js">
+      <Link>libs\JSIL.IO.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MainPage.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

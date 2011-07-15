@@ -113,6 +113,12 @@ namespace JSIL.Dom
 
         #endregion
 
+        public bool Enabled
+        {
+            get { return (bool)Verbatim.Expression("!this._element.disabled"); }
+            set { Verbatim.Expression("this._element.disabled = !value"); }
+        }
+
         public double Width
         {
             get { return (double)Verbatim.Expression("this._element.width"); }
