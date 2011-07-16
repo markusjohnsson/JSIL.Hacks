@@ -14,6 +14,10 @@ namespace JSIL.Dom
 
         public long Interval { get; private set; }
 
+        /// <summary>
+        /// Creates an IntervalDispatcher that dispatches an event after each elapse of <paramref name="interval"/> ms.
+        /// </summary>
+        /// <param name="interval">The interval in ms</param>
         public IntervalDispatcher(long interval)
         {
             this.Interval = interval;
