@@ -21,6 +21,15 @@ namespace JSIL.WebGL
         [JSReplacement("$this.gl.DEPTH_BUFFER_BIT")]
         public int DepthBufferBit { get; private set; }
 
+        [JSReplacement("$this.gl.DEPTH_TEST")]
+        public int DepthTest { get; private set; }
+
+        [JSReplacement("$this.gl.LINK_STATUS")]
+        public int LinkStatus { get; private set; }
+
+        [JSReplacement("$this.gl.COMPILE_STATUS")]
+        public int CompileStatus { get; private set; }
+
         private object gl;
 
         internal WebGLContext(object context)
@@ -38,11 +47,14 @@ namespace JSIL.WebGL
             return new WebGLContext(Verbatim.Expression("canvas._element.getContext('experimental-webgl')"));
         }
 
+        [JSReplacement("$this.gl.enable($flag)")]
+        public void Enable(int flag) { }
+
         [JSReplacement("$this.gl.clearColor($r, $g, $b, $a)")]
         public void ClearColor(double r, double g, double b, double a) { }
 
         [JSReplacement("$this.gl.viewport($x, $y, $w, $h)")]
-        public void ViewPort(double x, double y, double w, double h) { }
+        public void Viewport(double x, double y, double w, double h) { }
 
         [JSReplacement("$this.gl.clear($flags)")]
         public void Clear(int flags) { }
@@ -126,6 +138,19 @@ namespace JSIL.WebGL
         public void DrawArrays(GLDrawMode drawMode, int first, int count) { }
 
         [JSReplacement("$this.gl.uniformMatrix4fv($uniformLocation, $transpose, $value)")]
-        public void UniformMatrix4fv(GLUniformLocation uniformLocation, bool transpose, float[] value) { }
+        public void UniformMatrix4fv(GLUniformLocation uniformLocation, bool transpose, double[] value) { }
+
+        [JSReplacement("$this.gl.getProgramParameter($program, $parameter)")]
+        public bool GetProgramParameter(GLShaderProgram program, int parameter)
+        {
+            throw new NotImplementedException();
+        }
+
+        [JSReplacement("$this.gl.getShaderParameter($shader, $parameter)")]
+        public bool GetShaderParameter(GLShader shader, int parameter)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

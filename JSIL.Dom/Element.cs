@@ -144,10 +144,19 @@ namespace JSIL.Dom
 
         public static Element GetById(string id)
         {
-            return new Element()
+            var handle = Verbatim.Expression("document.getElementById(id)");
+
+            if (handle == null)
             {
-                _element = Verbatim.Expression("document.getElementById(id)")
-            };
+                throw new ArgumentOutOfRangeException("id"); 
+            }
+            else
+            {
+                return new Element()
+                {
+                    _element = handle
+                };
+            }
         }
 
         [JSReplacement("$this._element.removeChild($child._element)")]
@@ -157,6 +166,20 @@ namespace JSIL.Dom
 
         [JSChangeName("firstChild")]
         public Element FirstChild
+        {
+            get;
+            private set;
+        }
+
+        [JSChangeName("nextSibling")]
+        public Element NextSibling
+        {
+            get;
+            private set;
+        }
+
+        [JSChangeName("nodeType")]
+        public int NodeType
         {
             get;
             private set;
@@ -176,6 +199,11 @@ namespace JSIL.Dom
         {
             get { return (string)Verbatim.Expression("this._element.textContent"); }
             set { Verbatim.Expression("this._element.textContent = value"); }
+        }
+
+        public string GetAttributeValue(string attributeName)
+        {
+            return (string)Verbatim.Expression("this._element[attributeName]");
         }
     }
 }
