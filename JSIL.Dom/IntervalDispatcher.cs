@@ -12,15 +12,14 @@ namespace JSIL.Dom
 
         public event EventHandler Tick;
 
-        public long Interval { get; private set; }
+        public TimeSpan Interval { get; private set; }
 
         /// <summary>
-        /// Creates an IntervalDispatcher that dispatches an event after each elapse of <paramref name="interval"/> ms.
+        /// Creates an IntervalDispatcher that dispatches an event after each elapse of <paramref name="interval"/>.
         /// </summary>
-        /// <param name="interval">The interval in ms</param>
-        public IntervalDispatcher(long interval)
+        public IntervalDispatcher(TimeSpan timeSpan)
         {
-            this.Interval = interval;
+            Interval = timeSpan;
         }
 
         private void OnNativeEvent()
@@ -31,7 +30,7 @@ namespace JSIL.Dom
             }
         }
 
-        [JSReplacement("$this._handle = setInterval(function () { $this.OnNativeEvent(); }, $this.Interval)")]
+        [JSReplacement("$this._handle = setInterval(function () { $this.OnNativeEvent(); }, $this.Interval.TotalMilliseconds)")]
         public void Start()
         {
         }

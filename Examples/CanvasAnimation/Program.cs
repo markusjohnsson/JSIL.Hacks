@@ -27,7 +27,7 @@ namespace CanvasAnimation
 
             var angleOffset = 0d;
 
-            var timer = new IntervalDispatcher(1000 / 30);
+            var timer = new IntervalDispatcher(TimeSpan.FromMilliseconds(30));
             timer.Tick += (s, e) =>
             {
                 // draw background rect
