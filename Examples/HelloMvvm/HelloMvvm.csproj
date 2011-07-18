@@ -45,26 +45,26 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JSIL.Dom\JSIL.Dom.csproj">
+    <ProjectReference Include="..\..\JSIL.Dom\JSIL.Dom.csproj">
       <Project>{466EBF53-8EC1-4B8D-9AF4-061D9BFCA156}</Project>
       <Name>JSIL.Dom</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JSIL.Ui\JSIL.Ui.csproj">
+    <ProjectReference Include="..\..\JSIL.Ui\JSIL.Ui.csproj">
       <Project>{A74735CF-E7CD-4F5F-9BF8-47B62B277DC5}</Project>
       <Name>JSIL.Ui</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\dependencies\jsil\libraries\JSIL.IO.js">
-      <Link>libs\JSIL.IO.js</Link>
+    <None Include="..\..\dependencies\jsil\libraries\JSIL.Bootstrap.js">
+      <Link>libs\JSIL.Bootstrap.js</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\dependencies\jsil\libraries\JSIL.Core.js">
+    <None Include="..\..\dependencies\jsil\libraries\JSIL.Core.js">
       <Link>libs\JSIL.Core.js</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\dependencies\jsil\libraries\JSIL.Bootstrap.js">
-      <Link>libs\JSIL.Bootstrap.js</Link>
+    <None Include="..\..\dependencies\jsil\libraries\JSIL.IO.js">
+      <Link>libs\JSIL.IO.js</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="MainPage.html">
