@@ -7,6 +7,24 @@ namespace JSIL.Dom
     public class Element
     {
         #region Events
+        private event EventHandler _change;
+        public event EventHandler Change
+        {
+            add
+            {
+                AddNativeHandler("change", e =>
+                {
+                    this._change(this, new EventArgs());
+                });
+                _change += value;
+            }
+            remove
+            {
+                RemoveNativehandler("change");
+                _change -= value;
+            }
+        }
+
         private event EventHandler _mouseOver;
         public event EventHandler MouseOver
         {
@@ -64,28 +82,28 @@ namespace JSIL.Dom
         #endregion
 
         #region Generic event handling
-        private void RemoveNativehandler(string eventName)
+        protected void RemoveNativehandler(string eventName)
         {
             var handler = _handlers[eventName];
             handler.Counter--;
             if (handler.Counter <= 0)
             {
-                RemoveEventListener(eventName, handler.Proxy);
+                RemoveEventListener(eventName, handler.Handler);
                 _handlers[eventName] = null;
             }
         }
 
-        private void AddNativeHandler(string eventName, Action<object> proxy)
+        protected void AddNativeHandler(string eventName, Action<object> handler)
         {
 
             if (!_handlers.ContainsKey(eventName) || _handlers[eventName] == null)
             {
-                var handler = new Handler
+                var proxy = new Proxy
                 {
-                    Proxy = proxy
+                    Handler = handler
                 };
-                AddEventListener(eventName, handler.Proxy);
-                _handlers[eventName] = handler;
+                AddEventListener(eventName, proxy.Handler);
+                _handlers[eventName] = proxy;
             }
             else
             {
@@ -93,13 +111,13 @@ namespace JSIL.Dom
             }
         }
 
-        class Handler
+        class Proxy
         {
             public int Counter = 0;
-            public Action<object> Proxy;
+            public Action<object> Handler;
         }
 
-        private Dictionary<object, Handler> _handlers = new Dictionary<object, Handler>();
+        private Dictionary<object, Proxy> _handlers = new Dictionary<object, Proxy>();
 
         [JSReplacement("$this._element.addEventListener($name, $handler)")]
         private void AddEventListener(string name, Action<object> handler)
@@ -113,6 +131,7 @@ namespace JSIL.Dom
 
         #endregion
 
+        #region Properties
         public bool Enabled
         {
             get { return (bool)Verbatim.Expression("!this._element.disabled"); }
@@ -130,12 +149,14 @@ namespace JSIL.Dom
             get { return (double)Verbatim.Expression("this._element.height"); }
             set { Verbatim.Expression("this._element.height = value"); }
         }
+        #endregion
 
         protected object _element;
 
         public Element(string type)
         {
             _element = Verbatim.Expression("document.createElement(type)");
+            Verbatim.Expression("this._element._ElementThis = this");
         }
 
         private Element()
@@ -144,18 +165,37 @@ namespace JSIL.Dom
 
         public static Element GetById(string id)
         {
-            var handle = Verbatim.Expression("document.getElementById(id)");
+            var element = GetElement(Verbatim.Expression("document.getElementById(id)"));
 
-            if (handle == null)
+            if (element == null)
             {
-                throw new ArgumentOutOfRangeException("id"); 
+                throw new ArgumentOutOfRangeException("id");
             }
             else
+            {
+                return element;
+            }
+        }
+
+        private static Element GetElement(object handle)
+        {
+            if (handle == null)
+            {
+                return null;
+            }
+                
+            object element = Verbatim.Expression("handle._ElementThis");
+
+            if (element == null || element == Verbatim.Expression("undefined"))
             {
                 return new Element()
                 {
                     _element = handle
                 };
+            }
+            else
+            {
+                return (Element)element;
             }
         }
 
@@ -164,21 +204,23 @@ namespace JSIL.Dom
         {
         }
 
-        [JSChangeName("firstChild")]
         public Element FirstChild
         {
-            get;
-            private set;
+            get
+            {
+                return GetElement(Verbatim.Expression("this._element.firstChild"));
+            }
         }
 
-        [JSChangeName("nextSibling")]
         public Element NextSibling
         {
-            get;
-            private set;
+            get
+            {
+                return GetElement(Verbatim.Expression("this._element.nextSibling"));
+            }
         }
 
-        [JSChangeName("nodeType")]
+        [JSReplacement("$this._element.nodeType")]
         public int NodeType
         {
             get;
@@ -201,9 +243,15 @@ namespace JSIL.Dom
             set { Verbatim.Expression("this._element.textContent = value"); }
         }
 
+        [JSReplacement("$this._element[$attributeName]")]
         public string GetAttributeValue(string attributeName)
         {
-            return (string)Verbatim.Expression("this._element[attributeName]");
+            throw new NotSupportedException();
+        }
+
+        [JSReplacement("$this._element[$attributeName] = $value")]
+        protected void SetAttributeValue(string attributeName, string value)
+        {
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace JSIL.Ui
 {
-    class ItemsControl<T>: Element
+    public class ItemsControl<T>: Element
     {
         private Container _container;
         
@@ -54,7 +54,7 @@ namespace JSIL.Ui
             }
             set
             {
-                _ItemsSource = value ?? new T[0];
+                _ItemsSource = value ?? new List<T>();
                 Update();
             }
         }
@@ -64,10 +64,14 @@ namespace JSIL.Ui
         {
             _container.Clear();
 
+            var count = 0;
             foreach (var item in ItemsSource)
             {
+                count ++;
                 _container.AppendChild(ItemElementFactory.CreateElement(item));
             }
+
+            _container.AppendChild(new Label(count.ToString()));
         }
 
     }

@@ -58,7 +58,7 @@ namespace JSIL.Ui
         {
             while (FirstChild != null)
             {
-                RemoveChild(FirstChild);
+                base.RemoveChild(FirstChild);
             }
             Recreate();
         }

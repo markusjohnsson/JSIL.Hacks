@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A74735CF-E7CD-4F5F-9BF8-47B62B277DC5}</ProjectGuid>
+    <ProjectGuid>{32B6C8C2-A4CF-47C6-99E0-1C66D158F549}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JSIL.Ui</RootNamespace>
-    <AssemblyName>JSIL.Ui</AssemblyName>
+    <RootNamespace>HelloMvvm</RootNamespace>
+    <AssemblyName>HelloMvvm</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,39 +32,44 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Border.cs" />
-    <Compile Include="Box.cs" />
-    <Compile Include="Button.cs" />
-    <Compile Include="Color.cs" />
-    <Compile Include="Container.cs" />
-    <Compile Include="ElementList.cs" />
-    <Compile Include="Input\Input.cs" />
-    <Compile Include="Input\TextInput.cs" />
-    <Compile Include="Mvvm\DelegateCommand.cs" />
-    <Compile Include="Mvvm\DelegateCommand_T.cs" />
-    <Compile Include="Mvvm\ICommand.cs" />
-    <Compile Include="IElementFactory.cs" />
-    <Compile Include="ItemsControl.cs" />
-    <Compile Include="Label.cs" />
-    <Compile Include="Mvvm\INotifyPropertyChanged.cs" />
-    <Compile Include="Mvvm\PropertyChangedEventArgs.cs" />
-    <Compile Include="Mvvm\SimpleBinding.cs" />
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Size.cs" />
-    <Compile Include="Thickness.cs" />
-    <Compile Include="VBox.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dependencies\JSIL\Meta\Meta.csproj">
-      <Project>{37C67C73-1F58-49B8-A39E-768AC88C2447}</Project>
-      <Name>Meta</Name>
-    </ProjectReference>
     <ProjectReference Include="..\JSIL.Dom\JSIL.Dom.csproj">
       <Project>{466EBF53-8EC1-4B8D-9AF4-061D9BFCA156}</Project>
       <Name>JSIL.Dom</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JSIL.Ui\JSIL.Ui.csproj">
+      <Project>{A74735CF-E7CD-4F5F-9BF8-47B62B277DC5}</Project>
+      <Name>JSIL.Ui</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\dependencies\jsil\libraries\JSIL.IO.js">
+      <Link>libs\JSIL.IO.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\dependencies\jsil\libraries\JSIL.Core.js">
+      <Link>libs\JSIL.Core.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\dependencies\jsil\libraries\JSIL.Bootstrap.js">
+      <Link>libs\JSIL.Bootstrap.js</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="MainPage.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

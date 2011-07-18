@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanvasAnimation", "Examples
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWebGL", "Examples\HelloWebGL\HelloWebGL.csproj", "{AEF3C6D5-0780-49F0-B4E6-558BFA2AB07B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloMvvm", "HelloMvvm\HelloMvvm.csproj", "{32B6C8C2-A4CF-47C6-99E0-1C66D158F549}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,12 @@ Global
 		{AEF3C6D5-0780-49F0-B4E6-558BFA2AB07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEF3C6D5-0780-49F0-B4E6-558BFA2AB07B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AEF3C6D5-0780-49F0-B4E6-558BFA2AB07B}.Release|x86.ActiveCfg = Release|Any CPU
+		{32B6C8C2-A4CF-47C6-99E0-1C66D158F549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B6C8C2-A4CF-47C6-99E0-1C66D158F549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B6C8C2-A4CF-47C6-99E0-1C66D158F549}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{32B6C8C2-A4CF-47C6-99E0-1C66D158F549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B6C8C2-A4CF-47C6-99E0-1C66D158F549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B6C8C2-A4CF-47C6-99E0-1C66D158F549}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
