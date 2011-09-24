@@ -14,6 +14,11 @@ namespace JSIL.Ui.Mvvm
             return new SimpleBinding(targetHost, targetProperty, sourceHost, sourceProperty);
         }
 
+        public static IDisposable CreateTwoWay(INotifyPropertyChanged targetHost, string targetProperty, INotifyPropertyChanged sourceHost, string sourceProperty)
+        {
+            throw new NotImplementedException();
+        }
+
         private SimpleBinding(object targetHost, string targetProperty, INotifyPropertyChanged sourceHost, string sourceProperty)
         {
             _sourceHost = sourceHost;
@@ -34,7 +39,7 @@ namespace JSIL.Ui.Mvvm
 
         public void Dispose()
         {
-            _sourceHost.PropertyChanged += OnPropertyChanged;
+            _sourceHost.PropertyChanged -= OnPropertyChanged;
         }
     }
 }

@@ -1,24 +1,43 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-    <title></title>
+    <title>Hello MVVM</title>
     <script type="text/javascript" src="libs/JSIL.Core.js"></script>
     <script type="text/javascript" src="libs/JSIL.Bootstrap.js"></script>
     <script type="text/javascript" src="JSIL.Dom, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js"></script>
     <script type="text/javascript" src="JSIL.Ui, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js"></script>
+    <!--<script type="text/javascript" src="System.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js"></script>-->
     <script type="text/javascript" src="HelloMvvm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js"></script>
     <script type="text/javascript">
         window.onload = function () {
-//            setTimeout(function () {
-                JSIL.Initialize();
+            JSIL.Initialize();
 
-                // Call the entry point of the program:
-                $asm01.HelloMvvm.Program.Main(null);
-//            }, 1500);
+            // Call the entry point of the program:
+            $asm01.HelloMvvm.Program.Main(null);
         }
     </script>
+    <style type="text/css">
+        * { font-family: sans-serif; }
+        p, div, body, span, h1, h2, h3, h4 { padding: 0; margin: 0; }
+        .postItem { border-bottom: 1px solid #ccc; background-color: #eee; }
+        .postItem h2 { font-size: 12pt; color: #003567; }
+        .postItem p { font-size: 12pt; color: #333; }
+    </style>
 </head>
 <body>
+    <script id="postItemTemplate" type="text/x-jsil-tmpl">
+        <div class="postItem">
+            <h2>{Header}</h2>
+            <p>{Content}</p>
+        </div>
+    </script>
+
+    <script id="postListTemplate" type="text/x-jsil-tmpl">
+        <div class="postList">
+            
+        </div>
+    </script>
+
     <div id="target">
         <!-- "target" is referenced in the C# application, where elements are added dynamically -->
     </div>

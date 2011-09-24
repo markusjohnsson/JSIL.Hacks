@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using JSIL.Dom;
 using JSIL.Ui;
@@ -8,15 +7,21 @@ using JSIL.Ui.Mvvm;
 
 namespace HelloMvvm
 {
+    public class Post
+    {
+        public string Header { get; set; }
+        public string Content { get; set; }
+    }
+
     public class MainViewModel : INotifyPropertyChanged
     {
         public MainViewModel()
         {
-            _posts = new List<string>();
+            _posts = new List<Post>();
         }
 
-        private List<string> _posts;
-        public IEnumerable<string> Posts
+        private List<Post> _posts;
+        public IEnumerable<Post> Posts
         {
             get
             {
@@ -24,29 +29,61 @@ namespace HelloMvvm
             }
         }
 
+        #region HeaderInput
+
+        private string _headerInput;
+        public string HeaderInput
+        {
+            get { return _headerInput; }
+            set
+            {
+                if (value == _headerInput) { return; }
+                _headerInput = value;
+                RaisePropertyChanged("HeaderInput");
+            }
+        }
+
+        #endregion
+
+        #region ContentInput
+
+        private string _contentInput;
+        public string ContentInput
+        {
+            get { return _contentInput; }
+            set
+            {
+                if (value == _contentInput) { return; }
+                _contentInput = value;
+                RaisePropertyChanged("ContentInput");
+            }
+        }
+
+        #endregion
+
         #region PostCommand
 
-        private DelegateCommand<string> _postCommand;
-        public DelegateCommand<string> PostCommand
+        private DelegateCommand _postCommand;
+        public DelegateCommand PostCommand
         {
             get
             {
                 if (_postCommand == null)
                 {
-                    _postCommand = new DelegateCommand<string>(PostExecute, PostCanExecute);
+                    _postCommand = new DelegateCommand(PostExecute, PostCanExecute);
                 }
                 return _postCommand;
             }
         }
 
-        public bool PostCanExecute(string param)
+        public bool PostCanExecute()
         {
             return true;
         }
 
-        public void PostExecute(string param)
+        public void PostExecute()
         {
-            _posts.Add(param);
+            _posts.Add(new Post { Header = HeaderInput, Content = ContentInput });
             RaisePropertyChanged("Posts");
         }
 

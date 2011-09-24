@@ -11,7 +11,14 @@ namespace HelloWorld
         public static void Main()
         {
             // equivalent to <h1>Hello World</h1>:
-            var header = new Element("h1") { TextContent = "Hello World" };
+            var header = new Element("h1")
+            {
+                TextContent = "Hello World",
+                Style = { 
+                    { "border", "2px dashed green" },
+                    { "padding", "10px" }
+                }
+            };
 
             // equivalent to document.getElementById("target"):
             var target = Element.GetById("target");

@@ -1,5 +1,6 @@
 ﻿using JSIL.Meta;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace JSIL.Dom
@@ -60,7 +61,7 @@ namespace JSIL.Dom
                 _mouseOut -= value;
             }
         }
-        
+
         private event EventHandler _click;
         public event EventHandler Click
         {
@@ -151,15 +152,49 @@ namespace JSIL.Dom
         }
         #endregion
 
-        protected object _element;
-
-        public Element(string type)
+        public StyleCollection Style
         {
-            _element = Verbatim.Expression("document.createElement(type)");
-            Verbatim.Expression("this._element._ElementThis = this");
+            get;
+            private set;
         }
 
-        private Element()
+        protected object _element;
+        protected Element _selfReference;
+
+        public Element(string type)
+            : this(Verbatim.Expression("document.createElement(type)"))
+        {
+        }
+
+        protected Element(object element)
+        {
+            if (element == null)
+                throw new ArgumentNullException("element");
+
+            _element = element;
+            _selfReference = this;
+            Style = new StyleCollection(this);
+
+            if (!_creatingTemplate)
+                TemplateApplied();
+        }
+
+        // this is a horrible thing: a flag that is used to prevent a call to TemplateApplied 
+        // in the constructor while creating elements from templates
+        private static bool _creatingTemplate = false;
+
+        public static T CreateFromTemplate<T>(string templateId) where T : Element, new()
+        {
+            _creatingTemplate = true;
+            var element = new T();
+            _creatingTemplate = false;
+            element._element = Verbatim.Expression("document.getElementById(templateId)");
+            element._selfReference = element;
+            element.TemplateApplied();
+            return element;
+        }
+
+        protected virtual void TemplateApplied()
         {
         }
 
@@ -183,15 +218,12 @@ namespace JSIL.Dom
             {
                 return null;
             }
-                
-            object element = Verbatim.Expression("handle._ElementThis");
+
+            object element = Verbatim.Expression("handle._selfReference");
 
             if (element == null || element == Verbatim.Expression("undefined"))
             {
-                return new Element()
-                {
-                    _element = handle
-                };
+                return new Element(handle);
             }
             else
             {
@@ -241,6 +273,33 @@ namespace JSIL.Dom
         {
             get { return (string)Verbatim.Expression("this._element.textContent"); }
             set { Verbatim.Expression("this._element.textContent = value"); }
+        }
+
+        public string InnerHtml
+        {
+            get { return (string)Verbatim.Expression("this._element.innerHTML"); }
+            set { Verbatim.Expression("this._element.innerHTML = value"); }
+        }
+
+        [JSReplacement("$this._element.className = \" \" + $className")]
+        public void AddClass(string value)
+        {
+        }
+
+        public void RemoveClass(string className)
+        {
+            var classNames = GetAttributeValue("className")
+                .Split(' ', '\t')
+                .Where(s => s != className);
+            
+            var names = string.Empty;
+
+            foreach (var name in classNames)
+            {
+                names += " " + name;
+            }
+
+            SetAttributeValue("className", names);
         }
 
         [JSReplacement("$this._element[$attributeName]")]

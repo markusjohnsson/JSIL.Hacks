@@ -64,14 +64,13 @@ namespace JSIL.Ui
         {
             _container.Clear();
 
-            var count = 0;
+            if (ItemsSource == null)
+                return;
+
             foreach (var item in ItemsSource)
             {
-                count ++;
                 _container.AppendChild(ItemElementFactory.CreateElement(item));
             }
-
-            _container.AppendChild(new Label(count.ToString()));
         }
 
     }
