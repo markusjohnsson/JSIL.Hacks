@@ -1,0 +1,26 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>Hello MVVM</title>
+    <script type="text/javascript" src="libs/JSIL.Core.js"></script>
+    <script type="text/javascript" src="libs/JSIL.Bootstrap.js"></script>
+    <script type="text/javascript" src="JSIL.Dom, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js"></script>
+    <!--<script type="text/javascript" src="JSIL.Ui, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js"></script>-->
+    <!--<script type="text/javascript" src="System.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js"></script>-->
+    <script type="text/javascript" src="HelloInt64, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            JSIL.Initialize();
+
+            // Call the entry point of the program:
+            $asm01.HelloInt64.Program.Main(null);
+        }
+    </script>
+
+</head>
+<body>
+    <div id="target">
+        <!-- "target" is referenced in the C# application, where elements are added dynamically -->
+    </div>
+</body>
+</html>
